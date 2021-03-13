@@ -5,6 +5,7 @@
   --border-color: #c0c0c0;
   --gray-color: #f8f8f8;
   --yellow-color: #f3a847;
+  --dark-color: #404040;
 }
 
 html {
@@ -113,4 +114,7 @@ img.medium {
 .rating span {
   color: var(--yellow-color);
   margin: 0.1rem;
+}
+.rating span:last-child {
+  color: var(--dark-color)
 }

@@ -1,62 +1,39 @@
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Product from "./components/Product";
 import data from "./data";
+import HomeScreen from "./screens/HomeScreen";
+import ProductScreen from "./screens/ProductScreen";
 
 function App() {
   return (
-    <div className="grid-container">
-      <header className="row">
-        <div>
-          <a className="brand" href="/">
-            shopper
-          </a>
-        </div>
-        <div>
-          <a href="/cart">Wagen</a>
-          <a href="/signin">Einloggen</a>
-        </div>
-      </header>
-      <main>
-        <div>
-          <div className="row center">
-            {data.products.map((product) => (
-              <div className="card" key={product._id}>
-                <a href={`/product/${product._id}`}>
-                  <img className="medium" src={product.image} alt={product.name} />
-                </a>
-                <div className="card-body">
-                  <a href={`/product/${product._id}`}>
-                    <h2>{product.name}</h2>
-                  </a>
-                  <div className="rating">
-                    <span>
-                      {" "}
-                      <i className="fa fa-star"></i>{" "}
-                    </span>
-                    <span>
-                      {" "}
-                      <i className="fa fa-star"></i>{" "}
-                    </span>
-                    <span>
-                      {" "}
-                      <i className="fa fa-star"></i>{" "}
-                    </span>
-                    <span>
-                      {" "}
-                      <i className="fa fa-star"></i>{" "}
-                    </span>
-                    <span>
-                      {" "}
-                      <i className="fa fa-star"></i>{" "}
-                    </span>
-                  </div>
-                  <div className="price">{product.price} €</div>
-                </div>
-              </div>
-            ))}
+    <Router>
+      <div className="grid-container">
+        <header className="row">
+          <div>
+            <a className="brand" href="/">
+              shopper
+            </a>
           </div>
-        </div>
-      </main>
-      <footer className="row center">Alle Rechte vorbehalten</footer>
-    </div>
+          <div>
+            <a href="/cart">Wagen</a>
+            <a href="/signin">Einloggen</a>
+          </div>
+        </header>
+        <main>
+          <Route path="/" component={HomeScreen} exact />
+          <Route path="/product/:id" component={ProductScreen}/>
+          <div>
+            <div className="row center">
+              {data.products.map((product) => (
+                <Product key={product._id} product={product} />
+              ))}
+            </div>
+          </div>
+        </main>
+        <footer className="row center">Alle Rechte vorbehalten</footer>
+      </div>
+    </Router>
   );
 }
 
