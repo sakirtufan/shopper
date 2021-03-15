@@ -6,8 +6,12 @@
   --gray-color: #f8f8f8;
   --yellow-color: #f3a847;
   --dark-color: #404040;
-  --error-color: #a02020;
+  --danger-color: #a02020;
+  --danger-bg-color:#ffe0e0;
   --success-color: #20a020;
+  --info-color: #2020a0;
+  --info-bg-color: #e0e0ff;
+
 }
 
 html {
@@ -164,6 +168,19 @@ img.large {
 .success {
   color: var(--success-color);
 }
-.error {
-  color: var(--error-color);
+.danger {
+  color: var(--danger-color);
+}
+.alert {
+  padding: 1rem;
+  border: 0.1rem solid transparent;
+  border-radius: 0.5rem;
+}
+.alert-info {
+  color: var(--info-color);
+  background-color: var(--info-bg-color);
+}
+.alert-danger {
+  color: var(--danger-color);
+  background-color: var(--danger-bg-color);
 }
