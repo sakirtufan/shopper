@@ -1,21 +1,18 @@
-import express from "express";
-import mongoose from "mongoose";
-import productRouter from "./routers/productRouter.js";
-import userRouter from "./routers/userRouter.js";
+import express from "express"
+import productRouter from "./routers/productRouter.js"
+import userRouter from "./routers/userRouter.js"
+import dotenv from "dotenv"
+import { connectDatabase } from './helpers/connectDatabase.js'
+
+
+dotenv.config();
 
 const app = express();
+// parse params
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/shopper", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-});
-
-
-
-
-
-
+connectDatabase();
 
 app.use("/api/users",userRouter);
 app.use("/api/products",productRouter);
