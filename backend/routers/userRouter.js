@@ -32,7 +32,7 @@ userRouter.post(
         return;
       }
     }
-    res.status(401).send({ message: "ungültiger Benutzername oder Passwort" });
+    res.status(401).send({ message: "ungültiger Email Addresse oder Passwort" });
   })
 );
 
